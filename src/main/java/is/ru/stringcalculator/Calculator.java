@@ -9,10 +9,15 @@ public class Calculator {
 		else if(text.startsWith("//", 0))
 		{
 			String delimiter = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
-			delimiter = delimiter.replace(' ', '|');
 			String numbers = text.substring(text.lastIndexOf("\n") + 1);
 			return sum(splitNumbers(numbers, delimiter));
 		}
+		else if(text.startsWith("//[", 0))
+		{
+			String delimiter = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+			String numbers = text.substring(text.lastIndexOf("\n") + 1);
+			delimiter = fixDelimiter(delimiter);
+			return sum(splitNumbers(numbers, delimiter));	
 		else if(text.contains(",")||text.contains("\n")){
 			return sum(splitNumbers(text, ",|\n"));
 		}
@@ -34,7 +39,7 @@ public class Calculator {
         for(String number : numbers){
         	if (toInt(number) < 0)
         	{
-        		negativeNumbers += number + ", ";
+        		negativeNumbers += number + ",";
         	}
         	if (toInt(number) < 1001)
         	{
@@ -47,13 +52,10 @@ public class Calculator {
 		}
 		else
 		{
-			return -1;
-			//throw MyExeption("Negatives not allowed: " + negativeNumbers);
+			throw new RuntimeException("Negatives not allowed:" + negativeNumbers);
 		}
     }
-    /*public class MyException(String error) extends Exception {
- 		
-	}*/
+    
 
 
 

@@ -66,18 +66,27 @@ public class CalculatorTest {
 
     @Test
     public void testLongCustomDelimiter (){
-    	assertEquals(6, Calculator.add("//Del\n1Del2Del3"));
+    	assertEquals(6, Calculator.add("//[Del]\n1Del2Del3"));
     }
 
     @Test
     public void testMultipleCustomDelimiter (){
-    	assertEquals(6, Calculator.add("//D E\n1D2E3"));
+    	assertEquals(6, Calculator.add("//[D][E]\n1D2E3"));
     }
 
     @Test
     public void testMultipleCustomLongDelimiter (){
-    	assertEquals(6, Calculator.add("//Del El E\n1Del2El3E0"));
+    	assertEquals(6, Calculator.add("//[Del][El][E]\n1Del2El3E0"));
     }
 
-
+    @Test
+    public void testException(){
+    	try{
+    		Calculator.add("-3,4,-6");
+    	}
+    	catch(Exception ex)
+    	{
+    		assertEquals("Negatives not allowed: -3,-6", ex.getMessage());
+    	}
+    }
 }
