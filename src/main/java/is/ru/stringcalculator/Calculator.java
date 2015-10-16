@@ -9,6 +9,7 @@ public class Calculator {
 		else if(text.startsWith("//", 0))
 		{
 			String delimiter = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+			delimiter = delimiter.replace(' ', '|');
 			String numbers = text.substring(text.lastIndexOf("\n") + 1);
 			return sum(splitNumbers(numbers, delimiter));
 		}

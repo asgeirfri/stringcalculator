@@ -69,5 +69,12 @@ public class CalculatorTest {
     	assertEquals(6, Calculator.add("//Del\n1Del2Del3"));
     }
 
+    @Test
+    public void testMultipleCustomDelimiter (){
+    	assertEquals(6, Calculator.add("//D E\n1D2E3"));
+    }
+
+
+
 
 }
