@@ -74,7 +74,10 @@ public class CalculatorTest {
     	assertEquals(6, Calculator.add("//D E\n1D2E3"));
     }
 
-
+    @Test
+    public void testMultipleCustomLongDelimiter (){
+    	assertEquals(6, Calculator.add("//Del El E\n1Del2El3E0"));
+    }
 
 
 }
