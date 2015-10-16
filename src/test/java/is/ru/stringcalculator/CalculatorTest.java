@@ -59,5 +59,15 @@ public class CalculatorTest {
     	assertEquals(3, Calculator.add("1001,3"));
     }
 
+    @Test
+    public void testLarge (){
+    	assertEquals(3, Calculator.add("1001,3"));
+    }
+
+    @Test
+    public void testLongCustomDelimiter (){
+    	assertEquals(6, Calculator.add("//Del\n1Del2Del3"));
+    }
+
 
 }
