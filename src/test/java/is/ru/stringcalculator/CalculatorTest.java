@@ -50,11 +50,6 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testNegativeNumberException(){
-    	assertEquals(-1, Calculator.add("-3,3"));
-    }
-
-    @Test
     public void testNumbersToHigh(){
     	assertEquals(3, Calculator.add("1001,3"));
     }
@@ -86,7 +81,7 @@ public class CalculatorTest {
     	}
     	catch(Exception ex)
     	{
-    		assertEquals("Negatives not allowed: -3,-6", ex.getMessage());
+    		assertEquals("Negatives not allowed:-3,-6", ex.getMessage());
     	}
     }
 }

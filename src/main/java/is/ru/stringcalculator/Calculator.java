@@ -6,18 +6,18 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		else if(text.startsWith("//", 0))
-		{
+		if(text.startsWith("//[", 0)){
+			String delimiter = text.substring(text.indexOf("//") + 3, text.indexOf("\n") - 1);
+			String numbers = text.substring(text.lastIndexOf("\n") + 1);
+			delimiter = fixDelimiter(delimiter);
+			return sum(splitNumbers(numbers, delimiter));
+		}
+		else if(text.startsWith("//", 0)){
 			String delimiter = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
 			String numbers = text.substring(text.lastIndexOf("\n") + 1);
 			return sum(splitNumbers(numbers, delimiter));
 		}
-		else if(text.startsWith("//[", 0))
-		{
-			String delimiter = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
-			String numbers = text.substring(text.lastIndexOf("\n") + 1);
-			delimiter = fixDelimiter(delimiter);
-			return sum(splitNumbers(numbers, delimiter));	
+			
 		else if(text.contains(",")||text.contains("\n")){
 			return sum(splitNumbers(text, ",|\n"));
 		}
@@ -39,7 +39,14 @@ public class Calculator {
         for(String number : numbers){
         	if (toInt(number) < 0)
         	{
-        		negativeNumbers += number + ",";
+        		if (negativeNumbers.isEmpty())
+        		{
+        			negativeNumbers += number;
+        		}
+        		else
+        		{
+        			negativeNumbers += "," + number;
+        		}
         	}
         	if (toInt(number) < 1001)
         	{
@@ -56,6 +63,21 @@ public class Calculator {
 		}
     }
     
+    private static String fixDelimiter(String str){
+    	String del = "";
+    	for( char c : str.toCharArray())
+    	{
+    		if (c == '[')
+    		{
+    			del = del + "|";
+    		}
+    		else if (c != ']')
+    		{
+    			del = del + c;
+    		}
+    	}
+    	return del;
+    }
 
 
 
