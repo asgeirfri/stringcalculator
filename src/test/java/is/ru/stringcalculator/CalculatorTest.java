@@ -34,5 +34,10 @@ public class CalculatorTest {
     	assertEquals(37, Calculator.add("1,2,3,0,0,3,4,6,7,2,5,4"));
     }
 
+    @Test
+    public void testTwoDelimiters(){
+    	assertEquals(10, Calculator.add("1\n2,3\n4"));
+    }
+
 
 }
