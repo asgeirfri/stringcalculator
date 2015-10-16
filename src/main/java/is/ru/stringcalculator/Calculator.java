@@ -6,6 +6,12 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.startsWith("//", 0))
+		{
+			String delimiter = text.substring(text.indexOf("//") + 2, text.indexOf("\n"));
+			String numbers = text.substring(text.lastIndexOf("\n") + 1);
+			return sum(splitNumbers(numbers, delimiter));
+		}
 		else if(text.contains(",")||text.contains("\n")){
 			return sum(splitNumbers(text, ",|\n"));
 		}

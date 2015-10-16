@@ -44,5 +44,11 @@ public class CalculatorTest {
     	assertEquals(10, Calculator.add("1\n2\n3\n4"));
     }
 
+    @Test
+    public void testCustomDelimiters(){
+    	assertEquals(3, Calculator.add("//p\n1p2"));
+    }
+
+
 
 }
