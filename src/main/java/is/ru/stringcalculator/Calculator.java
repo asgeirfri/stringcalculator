@@ -29,11 +29,30 @@ public class Calculator {
       
     private static int sum(String[] numbers){
  	    int total = 0;
+ 	    String negativeNumbers = "";
         for(String number : numbers){
-		    total += toInt(number);
+        	if (toInt(number) < 0)
+        	{
+        		negativeNumbers += number + ", ";
+        	}
+        	if (toInt(number) < 1001)
+        	{
+		    	total += toInt(number);
+		    }
 		}
-		return total;
+		if (negativeNumbers.isEmpty())
+		{
+			return total;
+		}
+		else
+		{
+			return -1;
+			//throw MyExeption("Negatives not allowed: " + negativeNumbers);
+		}
     }
+    /*public class MyException(String error) extends Exception {
+ 		
+	}*/
 
 
 
